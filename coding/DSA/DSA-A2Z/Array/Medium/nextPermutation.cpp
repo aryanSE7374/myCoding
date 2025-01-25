@@ -2,6 +2,8 @@
 using namespace std;
 
 
+// this is a sample comment
+
 /*
 // wrong approach
 
