@@ -1,0 +1,118 @@
+.main-container{
+    width: 100%;
+}
+
+.menu-container{
+    display: flex;
+    background-color: #c9ffc7;
+    color:#001524;
+    width: 100%;
+    height: 100px;
+    justify-content: center;
+    
+}
+
+
+ /* menu images */
+#image-menu{
+    padding-top: 38px;
+    height:24px;
+    width: 24px;
+}
+.menu{
+    min-width: 200px;
+    font-size: 1.5em;
+    padding-top: 38px;   
+}
+
+#git-projects{
+    text-decoration: none;
+    color:#001524;
+}
+
+
+
+/* welcome banner*/
+.welcome-banner-container{
+    display: flex;
+   position: relative;
+   text-align: center; 
+}
+
+#wlcm-image{
+    width: 100%;
+    opacity: 0.8;
+}
+#wlcm-tiitle{
+    position: absolute;
+    top: 30%;
+    left: 32%;
+    font-size: 5em;
+}
+#wlcm-subtiitle{
+    position: absolute;
+    color: rgb(90, 88, 88);
+    top: 40%;
+    left: 45%;
+    font-size: 2em;
+}
+
+
+.skills-heading{
+    display: flex;
+    widows: 100%;
+    height: 100px;
+    color: black;
+    background-color: white;
+    font-size: 2em;
+    margin-bottom: 150px;
+}
+
+.heading-text{
+    margin-left: 45%;
+    margin-top: 155px;
+}
+
+.skill-container{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    height: 500px; /* height of the container */
+    margin-top: 50px;
+    flex-direction: row; 
+    margin-left: auto;
+   
+}
+
+.skill{
+    display: flex;
+    width: 100%;
+    margin-top: 40px;
+    justify-content: center;
+
+}
+
+#skill-1-image{
+    height: 150px;
+    width: 150px;
+}
+
+#skill-2-image{
+    height: 150px;
+    width: 150px;
+}
+
+#skill-3-image{
+    height: 150px;
+    width: 150px;
+}
+
+
+#skill-text{
+    color: black;
+    margin-top: 55px;
+    font-weight: bold;
+    font-size: 2em;
+
+}
+

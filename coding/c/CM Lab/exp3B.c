@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <math.h>
+
+double func(double x) {
+    return x*x*x - 3*x - 5;
+}
+
+double derivFunc(double x) {
+    return (3*x*x - 3);
+}
+
+int main() {
+    double x0, x1;
+    double epsilon = 0.0001;
+    int maxitr, i = 1;
+
+    // printf("Name: Aryan Shrivastav\nClass: IT-B\nRoll No.: 067\n");
+    printf("Ankit , 56 ,IT - B\n");
+    // printf("Satyam Jha , 66 , IT - B\n");
+    printf("Newton-Raphson Method\n");
+
+    printf("Enter x0: ");
+    scanf("%lf", &x0);
+
+    printf("Enter maximum number of iterations: ");
+    scanf("%d", &maxitr);
+
+    while (i <= maxitr) {
+        x1 = x0 - (func(x0) / derivFunc(x0));
+        if (fabs(x1 - x0) < epsilon) {
+            printf("Root found at x = %lf\n", x1);
+            break;
+        }
+        x0 = x1;
+        printf("Iteration %d: x = %lf, f(x) = %lf\n", i, x0, func(x0));
+        i++;
+    }
+
+    if (i > maxitr) {
+        printf("Root not found within %d iterations\n", maxitr);
+    }
+
+    return 0;
+}

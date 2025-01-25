@@ -1,0 +1,29 @@
+{
+    "files.associations": {
+        "cinttypes": "cpp",
+        "cfenv": "cpp",
+        "ccomplex": "cpp",
+        "algorithm": "cpp",
+        "__config": "cpp",
+        "__hash_table": "cpp",
+        "__locale": "cpp",
+        "__split_buffer": "cpp",
+        "array": "cpp",
+        "bitset": "cpp",
+        "iomanip": "cpp",
+        "ios": "cpp",
+        "iterator": "cpp",
+        "locale": "cpp",
+        "ostream": "cpp",
+        "print": "cpp",
+        "regex": "cpp",
+        "sstream": "cpp",
+        "string": "cpp",
+        "string_view": "cpp",
+        "vector": "cpp",
+        "iosfwd": "cpp",
+        "unordered_map": "cpp",
+        "forward_list": "cpp",
+        "list": "cpp"
+    }
+}
