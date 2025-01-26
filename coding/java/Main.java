@@ -53,8 +53,10 @@ class Solution {
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("enter the number of testcases: ");
         int t = scanner.nextInt();
         while (t-- > 0) {
+            System.out.println("enter the input string");
             String str = scanner.next();
             if (str.length() <= 10) {
                 System.out.println(str);
