@@ -26,6 +26,8 @@ public:
         // return max_len;
 
 
+        // better sol
+
         int n = nums.size();
         if(!n){return 0;}
         sort(nums.begin() , nums.end());
@@ -49,6 +51,11 @@ public:
 
     }
 };
+
+
+
+
+
 
 
 // optimal solution without modifying the original array

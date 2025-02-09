@@ -40,6 +40,52 @@ public:
 /*
 Brute Force: Finding all possible permutations. 
 
+// extreme brute
+
+Explanation:
+	1.	Generate all permutations:
+The do-while loop with next_permutation generates all possible permutations of the input array, starting from the smallest permutation.
+	2.	Sort and find:
+The permutations are already generated in lexicographical order because of the way next_permutation works.
+	3.	Identify the next permutation:
+Locate the input array in the list and assign the next one to nums. If it’s the last permutation, wrap around to the first.
+
+Complexity:
+	•	Time Complexity: O(N! \times N)
+N! for generating all permutations, and N for comparing arrays in each iteration.
+	•	Space Complexity: O(N! \times N)
+Space for storing all permutations.
+
+This method is highly inefficient but adheres to the brute-force logic you requested.
+
+// implementation
+class Solution {
+public:
+    void nextPermutation(vector<int>& nums) {
+        vector<vector<int>> permutations;
+        
+        // Step 1: Generate all permutations
+        sort(nums.begin(), nums.end()); // Start with the smallest permutation
+        do {
+            permutations.push_back(nums);
+        } while (next_permutation(nums.begin(), nums.end()));
+        
+        // Step 2: Find the input array in the sorted list
+        for (int i = 0; i < permutations.size(); i++) {
+            if (permutations[i] == nums) {
+                // Step 3: Return the next permutation or the first one if no next exists
+                if (i + 1 < permutations.size()) {
+                    nums = permutations[i + 1];
+                } else {
+                    nums = permutations[0]; // Wrap around to the first permutation
+                }
+                return;
+            }
+        }
+    }
+};
+
+
 Approach :
 
 Step 1: Find all possible permutations of elements present and store them.
@@ -54,7 +100,36 @@ Also for searching input arrays from all possible permutations will take N!. The
 
 Space Complexity :
 Since we are not using any extra spaces except stack spaces for recursion calls. So, it has a space complexity of O(1).
+
+
+// brute implementation
+class Solution {
+public:
+    void nextPermutation(vector<int>& nums) {
+        vector<int> original = nums; // Keep a copy of the original array
+        
+        // Sort the array to start with the smallest permutation
+        sort(nums.begin(), nums.end());
+        
+        do {
+            if (nums == original) {
+                // Generate the next permutation
+                if (next_permutation(nums.begin(), nums.end())) {
+                    return; // Found the next permutation
+                } else {
+                    // If no next permutation exists, reset to the smallest permutation
+                    sort(nums.begin(), nums.end());
+                    return;
+                }
+            }
+        } while (next_permutation(nums.begin(), nums.end()));
+    }
+};
+
+
 */
+
+
 
 //----------------------------------------------------------------------------------
 
@@ -64,7 +139,8 @@ Using in-built function
 
 C++ provides an in-built function called next_permutation() which directly returns the lexicographically next greater permutation of the input.
 
-next_permutation(arr,arr+n); // n = arr.size()
+next_permutation(arr,arr+n); // n = arr.size() 
+next_permutation(nums.begin(), nums.end()) // vectors
 
 */
 

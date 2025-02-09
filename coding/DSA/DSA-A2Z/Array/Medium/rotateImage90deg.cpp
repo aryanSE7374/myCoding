@@ -2,6 +2,8 @@
 using namespace std;
 
 
+// 90 degrees clockwise -- for anti clockwise : step 1: same, step 2 : rotate every column
+
 class Solution {
 public:
 void rotate(vector < vector < int >> & matrix) {
@@ -21,3 +23,5 @@ void rotate(vector < vector < int >> & matrix) {
         
     // }
 };
+
+
