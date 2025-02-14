@@ -3,7 +3,7 @@ using namespace std;
 
 
 
-// uper bound (log(N) approach)
+// uper bound (log(N) approach) 
 // But if any such index is not found, the upper bound algorithm returns n i.e. size of the given array. 
 int upperBound(vector<int> &arr, int x, int n) {
     int low = 0, high = n - 1;

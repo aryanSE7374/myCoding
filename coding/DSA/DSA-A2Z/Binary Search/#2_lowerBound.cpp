@@ -2,7 +2,9 @@
 using namespace std;
 
 
-// floor(lower bound) in a sorted array : log(N) approach
+//
+
+// (lower bound) in a sorted array : log(N) approach
 /*
 The lower bound is the smallest index, ind, where arr[ind] >= x. 
 But if any such index is not found, the lower bound algorithm returns n i.e. size of the given array.
