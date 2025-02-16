@@ -49,6 +49,11 @@ pair<int, int> getFloorAndCeil(int arr[], int n, int x) {
 int main() {
 	int arr[] = {3, 4, 4, 7, 8, 10};
 	int n = 6, x = 5;
+	// vector<int> result(2,-1);
+	// for(auto it : result){
+	// 	cout<<it<<", ";
+	// }
+	// cout<<endl;
 	pair<int, int> ans = getFloorAndCeil(arr, n, x);
 	cout << "The floor and ceil are: " << ans.first
 	     << " " << ans.second << endl;
