@@ -135,3 +135,26 @@ class Solution {
         }
     };
 
+
+
+// striver's optimal solution with different supporting function approach
+
+int daysReq(vector<int>& weights, int days , int maxCap){
+    int day=1;
+    int load=0;
+    int n = weights.size();
+    for (int i = 0; i < n; i++)
+    {
+        if (load+weights[i]>maxCap)
+        {
+            day++;
+            load = weights[i];
+        }
+        else{
+            load+=weights[i];
+        }
+    }
+    return day;
+}
+
+// if daysReq <= days : return cap
