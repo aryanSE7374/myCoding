@@ -177,5 +177,80 @@ class Solution {
         }
     };
 
-// try 3 : to optimize binary search
+// try 3 : to optimize binary search : ___
+
+// striver's optimal solution
+
+class Solution {
+    public:
+        double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
+            
+            /*
+                              ||
+            arr1_left .... l1 || r1 .... arr1_right 
+            arr2_left .... l2 || r2 .... arr2_right
+                              ||
+            */
+
+            // when even , search for l1,l2 ; when odd assume left side els > right side els
+
+            int n1 = nums1.size();
+            int n2 = nums2.size();
+            
+            //assuming that n1<=n2 ; i.e. searching the smaller array for optimization
+            if(n1>n2){return findMedianSortedArrays(nums2,nums1);}
+
+            int n = n1 + n2; // total no. of elements in combined array
+            // search range : 0 to n1-1
+            int low = 0; 
+            int high = n1;
+            int left = (n+1)/2; // total no. of els to be taken from left side   
+            //(i.e. arr1_left + arr2_left )
+            // middle element in case of odd , and in case of even : the no. of elemets to be taken on left side
+
+            while (low<=high)
+            {
+                // mid1 : no. of els to be taken from arr1
+                int mid1 = (low+high)>>1; //(low+high)/2
+                // mid2 : no. of els to be taken from arr2
+                int mid2 = left - mid1;
+
+                // corner elements to be compared
+                int l1 = INT_MIN , l2 = INT_MIN;
+                int r1 = INT_MAX , r2 = INT_MAX;
+
+                // mid1 , mid2 corresponds to the indics of r1 , r2
+                if(mid1<n1) r1 = nums1[mid1];
+                if(mid2<n2) r2 = nums2[mid2];
+
+                // checking edge case to assign values of l1 , l2
+                if(mid1-1 >= 0) l1 = nums1[mid1-1];
+                if(mid2-1 >= 0) l2 = nums2[mid2-1];
+
+                // success condtion : the only case to be considered
+                if((l1 <= r2) && (l2 <= r1) ){
+                    
+                    if(n%2==1){ // if odd
+                        return max(l1,l2);
+                    }
+                    else{ // else => if even
+                        return (double)(max(l1,l2)+min(r1,r2))/2.0;
+                    }
+                }
+
+                // eliminating the right half : take less elements from nums1
+                else if(l1>r2){
+                    high = mid1 - 1;
+                }
+
+                // eliminating the left half : take more elements from nums1
+                else{
+                    low = mid1 + 1;
+                }
+            }
+            return 0; // dummy return
+        }
+    };
+
+
 
