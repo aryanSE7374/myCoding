@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-// my solution : 
+// my solution : Brute
 
 // TC : O(N^2) , SC : O(N)
 
@@ -44,7 +44,7 @@ class Solution {
         }
 };
 
-// brute
+// better (optimal in terms of time)
 // TC : O(N) , SC : O(N)
 
 class Solution {
@@ -83,49 +83,49 @@ public:
 
 
 // Optimal Solution (Two-Pointer with In-Place Concatenation)
-// TC : O(N^2) , SC : O(N)
+// TC : O(N) , SC : O(N)
 
-class Solution {
-public:
-    string reverseWords(string s) {
-        int left = 0, right = s.length() - 1;
-        string temp = "";
-        string ans = "";
+    class Solution {
+    public:
+        string reverseWords(string s) {
+            int left = 0, right = s.length() - 1;
+            string temp = "";
+            string ans = "";
 
-        // Skip leading and trailing spaces
-        while (left <= right) {
-            char ch = s[left];
+            // Skip leading and trailing spaces
+            while (left <= right) {
+                char ch = s[left];
 
-            if (ch != ' ') {
-                temp += ch; // Form the current word
-            } else if (ch == ' ') {
-                if (!temp.empty()) { // Add the current word to the result
-                    if (!ans.empty()) {
-                        ans = temp + " " + ans; // Add to the front
-                    } else {
-                        ans = temp; // First word
+                if (ch != ' ') {
+                    temp += ch; // Form the current word
+                } else if (ch == ' ') {
+                    if (!temp.empty()) { // Add the current word to the result
+                        if (!ans.empty()) {
+                            ans = temp + " " + ans; // Add to the front
+                        } else {
+                            ans = temp; // First word
+                        }
+                        temp = ""; // Reset the temp for the next word
                     }
-                    temp = ""; // Reset the temp for the next word
+                }
+                left++;
+            }
+
+            // Add the last word (if any)
+            if (!temp.empty()) {
+                if (!ans.empty()) {
+                    ans = temp + " " + ans;
+                } else {
+                    ans = temp;
                 }
             }
-            left++;
-        }
 
-        // Add the last word (if any)
-        if (!temp.empty()) {
-            if (!ans.empty()) {
-                ans = temp + " " + ans;
-            } else {
-                ans = temp;
-            }
+            return ans;
         }
-
-        return ans;
-    }
-};
+    };
 
 // chatGPT soln : 
-// Optimized Approach
+// Optimized Approach 
 // Instead of manually reversing each word and concatenating, you can:
 // 	1.	Split the string into words.
 // 	2.	Reverse the order of the words.
@@ -169,7 +169,7 @@ public:
     }
 };
 
-// chatGPT soln : 
+// chatGPT soln : Best
 // Alternative (Two-Pointer In-Place Solution)
 
 // If in-place manipulation is preferred, you can:
@@ -190,6 +190,7 @@ public:
                 trimmed += s[i];
             }
         }
+        // remove last space
         if (!trimmed.empty() && trimmed.back() == ' ') {
             trimmed.pop_back();
         }

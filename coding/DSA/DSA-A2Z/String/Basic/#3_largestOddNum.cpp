@@ -50,7 +50,7 @@ public:
         int idx = n;
         string str = "";
         for(int i = n-1 ; i>=0 ; i-- ){
-            if((int(num[i])-48)%2==1){
+            if((int(num[i]))%2==1){
                 idx = i;
                 break;
             }
@@ -69,4 +69,45 @@ public:
 };
 
 
+// my optimal try 2 => better solution
+// TC : O(n)
+// SC : O(n) , AS : O(1)
+
+class Solution {
+public:
+    string largestOddNumber(string num) {
+        int n = num.size();
+        for(int i = n-1 ; i>=0 ; i-- ){
+            if(num[i]%2==1){
+                return num.substr(0,i+1);
+            }
+        }
+        return "";
+    }
+};
+
+// most optimal
+// TC : O(n)
+// SC : O(1) , AS : O(1)
+
+class Solution {
+public:
+    string largestOddNumber(string num) {
+        for (int i = num.size() - 1; i >= 0; --i) {
+            if ((num[i] - '0') % 2 == 1) {
+                num.resize(i + 1); // Resize the string to the valid substring
+                return num;
+            }
+        }
+        return ""; // No odd number found
+    }
+};
+
+// driver code
+
+int main(){
+    char c = '0';
+    cout<<(c%2)<<endl;
+    return 0;
+}
 
