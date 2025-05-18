@@ -8,6 +8,7 @@ using namespace std;
 
 class Solution {
     public:
+        // it is a O(len_of_s)
         string rev(string s){
             int n = s.length();
             int l=0 , h = n-1;
@@ -23,7 +24,7 @@ class Solution {
         string reverseWords(string s) {
             int n = s.length();
             string ans = "";
-            for(int i = n-1 ; i>=0 ; i--){
+            for(int i = n-1 ; i>=0 ; i--){ // O(n)
                 // if((int)s[i]!=32){}
                 if(s[i]!=' '){
                     string temp = "";
@@ -33,7 +34,7 @@ class Solution {
                         i--;
                     }
                     // temp = rev(temp);
-                    ans = ans+rev(temp);
+                    ans = ans+rev(temp); // O(n) : O(len_of_ans)
                     ans += " ";
                 }
             }
@@ -44,7 +45,7 @@ class Solution {
 };
 
 // brute
-// TC : O(N^2) , SC : O(N)
+// TC : O(N) , SC : O(N)
 
 class Solution {
 public:
