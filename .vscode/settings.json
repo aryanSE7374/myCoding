@@ -5,6 +5,8 @@
         "limits": "cpp",
         "valarray": "cpp",
         "algorithm": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "queue": "cpp",
+        "stack": "cpp"
     }
 }
