@@ -1,8 +1,10 @@
 {
     "files.associations": {
+        "*.ejs": "html",
         "string": "cpp",
         "__locale": "cpp",
         "regex": "cpp",
-        "string_view": "cpp"
+        "string_view": "cpp",
+        "unordered_map": "cpp"
     }
 }
