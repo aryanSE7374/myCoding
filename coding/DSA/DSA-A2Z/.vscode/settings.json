@@ -5,6 +5,7 @@
         "__locale": "cpp",
         "regex": "cpp",
         "string_view": "cpp",
-        "unordered_map": "cpp"
+        "unordered_map": "cpp",
+        "typeinfo": "cpp"
     }
 }
