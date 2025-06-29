@@ -6,6 +6,7 @@
         "regex": "cpp",
         "string_view": "cpp",
         "unordered_map": "cpp",
-        "typeinfo": "cpp"
+        "typeinfo": "cpp",
+        "unordered_set": "cpp"
     }
 }
