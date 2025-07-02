@@ -1,0 +1,373 @@
+/* This section sets default styles for all elements */
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+    box-sizing: border-box;
+}
+/* Add smooth scrolling behavior */
+html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Optional: Add a transition to smooth out the scrolling */
+  body {
+    transition: scroll-behavior 5s ease-in-out;
+  }
+/* This section sets styles for the entire body of the webpage*/
+body{
+    background: #080808;
+    color: #fff;
+}
+/* This section sets styles for the header of the webpage */
+#header{
+    width: 100%;
+    height: 100vh;
+    background-image: url(images/background.jpeg);
+    background-size: cover;
+    background-position: center;
+}
+/* This section sets styles for the main content container */
+.container {
+    padding: 10px 10%;
+}
+/* This section sets styles for the navigation bar */
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+/* This section sets styles for the logo */
+.logo {
+    width: 140px;
+}
+/* This section sets styles for the navigation bar links */
+nav ul li {
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px;
+}
+/* This section sets styles for the navigation bar link text */
+nav ul li a {
+    color:#fff;
+    text-decoration:none;
+    font-size: 36px;
+    position: relative;
+    text-shadow: #fc0 1px 0 10px;
+}
+/* This section sets styles for the navigation bar link underline */
+nav ul li a::after {
+    content: '';
+    width: 0;
+    height: 3px;
+    background: #fff;
+    position:absolute;
+    left: 0;
+    bottom: -6px;
+    transition: 0.7s;
+}
+/* This section sets styles for the navigation bar link underline on hover  */
+nav ul li a:hover::after {
+    width: 100%;
+}
+/* This section sets styles for the text in the header section*/
+.header-text {
+    margin-top: 15%;
+    font-size: 30px;
+}
+/* This section sets styles for the main header text */
+.header-text h1 {
+    font-size: 60px;
+    margin-top: 20px;
+}
+/* This section sets styles for the colored portion of the main header text */
+.header-text h1 span {
+    color:#ffd700;
+}
+/* --------about------ */
+/* This section sets styles for the about section */
+#about {
+    padding: 80px 0;
+    color: #ababab;
+}
+/* This section sets styles for the about section columns */
+.row {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+/* This section sets styles for the about section image column */
+.about-col-1 {
+    flex-basis: 35%;
+}
+/* This section sets styles for the about section image */
+.about-col-1 img {
+    width: 100%;
+    border-radius: 15px;
+
+}
+/* This section sets styles for the about section text column */
+.about-col-2 {
+    flex-basis: 60%;
+
+}
+/* This section sets styles for the sub-title in the about section */
+.sub-title {
+   font-size: 60px;
+   font-weight: 600;
+   color: #fff; 
+}
+/* This section sets styles for the tab titles in the about section */
+.tab-titles {
+    display: flex;
+    margin: 20px 0 40px;
+}
+/* This section sets styles for the individual tab links in the about section */
+.tab-links {
+    margin-right: 50px;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    position: relative;
+}
+/* This block sets the styling for the indicator line that appears below the active tab link */
+.tab-links::after {
+    content: '';
+    width: 0;
+    height: 3px;
+    background: #ffd700;
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+   transition: 0.5s; 
+}
+/* This block sets the styling for the active link's indicator line, which makes it wider than the inactive links */
+.tab-links.active-link::after {
+    width: 50%;
+}
+/* This block sets the styling for the list items within the tab contents */
+.tab-contents ul li {
+    list-style: none;
+    margin: 10px 0;
+}
+/*This block sets the styling for the text within the list items in the tab contents */
+.tab-contents ul li span {
+    color:#ebda7e;
+    font-size: 14px;
+}
+/* This block hides all tab contents by default*/
+.tab-contents {
+    display: none;
+}
+/* block display when click on tab contents is visible */
+.tab-contents.active-tab {
+    display: block;
+}
+/*-------services-------*/
+#services {
+    padding: 30px 0;
+}
+/*css for class service-list (grid-template)*/
+.services-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 40px;
+    margin-top: 50px;
+}
+/* adds padding and a background to sections grid, hover transition and transform properties */
+.services-list section {
+    background: #262626;
+    padding: 40px;
+    font-size: 13px;
+    font-weight: 300;
+    border-radius: 10px;
+    transition: background 0.75s, transform 0.75s;
+}
+/* makes the symbol bigger */
+.services-list section i {
+    font-size: 50px;
+    margin-bottom: 30px;
+
+}
+/* increases the font size */
+.services-list section h2 {
+    font-size: 30px;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+/* decorate the link */
+.services-list section a {
+    text-decoration: none;
+    color:#fff;
+    font-size: 12px;
+    margin-top: 20px;
+    display: inline-block;
+}
+/* adds hover element over section grid */ 
+.services-list section:hover{
+    background:#b5da31d2;
+    transform: translateY(-10px);
+}
+/* portfolio */
+#portfolio {
+    padding: 50px 0;
+}
+/* adds a grid to the photos */
+.work-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 40px;
+    margin-top: 50px;
+}
+.work {
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+/*fits images in grid to look nice, transition to zoom in on img */
+.work img {
+    width: 100%;
+    border-radius: 10px;
+    display: block;
+    transition: transform 1s;
+}
+/*hides the image behind a gradient */
+.layer {
+    width: 100%;
+    height: 0;
+    background: linear-gradient(rgba(0, 0, 0, 0.6),#b5da31d2);
+    border-radius: 10px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 0 40px;
+    text-align: center;
+    font-size: 14px;
+    transition: height 1s;
+}
+.layer h3 {
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+.layer a {
+    margin-top: 20px;
+    color: #b5da31d2;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 60px;
+    background: #fff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    text-align: center; 
+}
+/* adds hover element onto my work images */
+.work:hover img {
+    transform: scale(1.1);
+}
+.work:hover .layer {
+    height: 100%;
+}
+/* adds see more button and displays background */
+.btn { 
+    display: block;
+    margin: 50px auto;
+    width: fit-content;
+    border: 1px solid #b5da31d2;
+    padding: 14px 50px;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #fff;
+    transition: .5s;
+}
+/* displays background color */
+.btn:hover {
+    background:#b5da31d2;
+}
+/* contact */
+.contact-left {
+    flex-basis: 35%;   
+}
+.contact-right {
+    flex-basis: 60%;   
+}
+.contact-left p{
+    margin-top: 30px;
+}
+.contact-left p i {
+    color: #b5da31d2;
+    margin-right: 15px;
+    font-size: 25px;
+}
+.social-icons {
+    margin-top: 30px;
+}
+/* displayed the icons at in block and changes color */
+.social-icons a {
+    text-decoration: none;
+    font-size: 30px;
+    margin-right: 15px;
+    color: #ababab;
+    display: inline-block;
+    transition: transform 0.5s;
+}
+/* adds hover element to icon when cursor over it */
+.social-icons a:hover {
+    color: #b5da31d2;
+    transform: translateY(-5px);
+}
+/* Moves the CV button to the left side of page */
+.btn.btn2 {
+    display: inline-block;
+    background: #b5da31d2;
+}
+.contact-right form {
+    width: 100%;
+}
+/*creates an input field to write */
+form input,form textarea {
+    width: 100%;
+    border: 0;
+    outline: none;
+    background: #262626;
+    padding: 15px;
+    margin: 15px 0;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 6px;
+}
+form .btn2 {
+    padding: 14px 60px;
+    font-size: 18px;
+    margin-top: 20px;
+    cursor: pointer;    
+}
+.copyright {
+   width: 100%;
+   text-align: center;
+   padding: 25px 0;
+   background: #262626;
+   font-weight: 300;
+   margin-top: 20px; 
+}
+.copyright i {
+    color:#b5da31d2;
+}
+/*--------------- css for small screen ------ */
+@media only screen and (max-width: 600px) {
+    .box {
+      flex: 0 0 45%;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .box {
+      flex: 0 0 100%;
+    }
+  }
