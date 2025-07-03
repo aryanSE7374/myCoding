@@ -8,6 +8,7 @@
         "unordered_map": "cpp",
         "typeinfo": "cpp",
         "unordered_set": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "vector": "cpp"
     }
 }
