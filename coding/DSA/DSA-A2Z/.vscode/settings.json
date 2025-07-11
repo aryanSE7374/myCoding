@@ -9,6 +9,7 @@
         "typeinfo": "cpp",
         "unordered_set": "cpp",
         "stack": "cpp",
-        "vector": "cpp"
+        "vector": "cpp",
+        "valarray": "cpp"
     }
 }
