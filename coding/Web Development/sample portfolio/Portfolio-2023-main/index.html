@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio Website</title>
+    <link rel="stylesheet" href="style.css"> 
+    <script src="https://kit.fontawesome.com/f5d6a7a4e9.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <section id="header">
+      <section class="container">
+        <nav>
+            <img src="images/logo-transparent-png.png" class="logo">
+            <ul>
+                <li><a href="#header">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>  
+            </ul>
+        </nav>
+        <section class="header-text">
+            <p> Full-Stack Coding Student</p>
+            <h1> Hi, I'm <span>Andres</span><br>Asencios from California</h1>
+        </section>
+      </section>  
+    </section>
+    <!-- -----about---- -->
+    <section id="about">
+     <section class="container">
+       <section class="row">
+        <section class="about-col-1">
+            <img src="images/work pic 2.jpg" alt="picture of andres at trader joes">
+        </section>
+        <section class="about-col-2">
+            <h1 class="sub-title">About Me</h1>
+            <p> I'm Andres Asencios,a dreamer with a goal to turn my dreams into reality! I seek to further my knowledge and strengths through learning new things! I have 2 cats and a bunch of houseplants! I hope to land an awesome tech job and help people code into the future!</p> <p><strong>Actively seeking job or apprenticeship.</strong></p>
+
+            <section class="tab-titles">
+                <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                <p class="tab-links" onclick="opentab('education')">Education</p>
+            </section>
+             <section class="tab-contents active-tab" id="skills">
+                <ul>
+                    <li><span>Full-Stack</span><br>Coding Student</li>
+                    <li><span>HTML</span><br>HTML5 knowledge</li>
+                    <li><span>JavaScript</span><br>JavaScript and APIs</li>
+                </ul>
+             </section>
+             <section class="tab-contents" id="experience">
+                <ul>
+                    <li><span>2023-Current</span><br>Full-stack Coding Student</li>
+                </ul>
+             </section>
+             <section class="tab-contents" id="education">
+                <ul>
+                    <li><span>2023</span><br>University of Berkeley Coding Bootcamp</li>
+                </ul>
+             </section>  
+        </section>
+       </section> 
+     </section>   
+    </section>
+<!---------services----------->
+<section id="services">
+    <section class="container">
+        <h1 class="sub-title">My Services</h1>
+        <section class="services-list">
+            <section>
+                <i class="fa-solid fa-seedling"></i>
+                <h2>Plant seller</h2>
+                <p>I collect and sell houseplants!</p>
+                <a href="https://www.etsy.com/shop/PapaPlant?ref=simple-shop-header-name&listing_id=1437069096">Learn more</a>
+            </section>
+            <section>
+                <i class="fa-solid fa-code-compare"></i>
+                <h2>HTML review</h2>
+                <p>I can review your HTML</p>
+                <a href="#">Learn more</a>
+            </section>
+            <section>
+                <i class="fa-brands fa-css3-alt"></i>
+                <h2>CSS review</h2>
+                <p>I can review your CSS</p>
+                <a href="#">Learn more</a>
+            </section>
+        </section>   
+    </section>
+</section>
+<!-----------portfolio----------->
+<section id="portfolio">
+  <section class="container">
+    <h1 class="sub-title">My Work</h1>
+    <section class="work-list">
+        <section class="work">
+           <img src="images/brandon-cormier-5IeNo4-rkQs-unsplash.jpg" alt="photo of succulents">
+           <section class="layer">
+            <h3>Plant Enthusiast</h3>
+            <p>I buy and sell plants online on etsy!</p>
+            <a href="https://www.etsy.com/shop/PapaPlant?ref=simple-shop-header-name&listing_id=1437069096"><i class="fa-solid fa-link"></i></a>
+           </section>
+        </section> 
+        <section class="work">
+            <img src="images/01-html-css-git-homework-demo.png" alt="photo of horiseon's webpage">
+            <section class="layer">
+                <h3>HTML review</h3>
+                <p>I can review your HTML code as I did with Horiseon's page!</p>
+                <a href="https://codingobliqua.github.io/fix_horiseons_page/"><i class="fa-solid fa-link"></i></a>
+               </section>
+         </section> 
+         <section class="work">
+            <img src="images/Horse-fight.JPG" alt="photo of Project 1">
+            <section class="layer">
+                <h3>Group Project (JS, APIs)</h3>
+                <p>Linked an 2 APIs to a webpage using JavaScript, HTML, and CSS </p>
+                <a href="https://codingobliqua.github.io/BerkeleyRacingClub/"><i class="fa-solid fa-link"></i></a>
+               </section>
+         </section>
+         <section class="work">
+            <img src="images/Horse Creator App.JPG" alt="photo of Project 2">
+            <section class="layer">
+                <h3>Group Project 2 (Node,Handlebars,MYSQL)</h3>
+                <p>Used node to build a backend app that can display user created character </p>
+                <a href="https://horse-creator-app-9839a5a7a948.herokuapp.com/"><i class="fa-solid fa-link"></i></a>
+               </section>
+         </section>
+    </section>
+    <a href="#" class="btn">See more!</a>
+</section>  
+</section>
+<!--contact-->
+<section id="contact">
+    <section class="container">
+        <section class="row">
+            <section class="contact-left">
+                <h1 class="sub-title">Contact Me</h1>
+                <p><i class="fa-solid fa-paper-plane"></i>andres.asencios10@gmail.com</p>
+                <p><i class="fa-solid fa-square-phone"></i>Phone-Number</p>
+                <section class="social-icons">
+                    <a href="https://github.com/CodingObliqua/Portfolio-2023"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://www.etsy.com/shop/PapaPlant?ref=simple-shop-header-name&listing_id=1437069096"><i class="fa-brands fa-etsy"></i></a>
+                    <a href="https://www.linkedin.com/in/andres-asencios-b4715a271/"><i class="fa-brands fa-linkedin"></i></a>
+                </section>
+                <a href="images/RESUME_cv.pdf" download class="btn btn2">Download CV</a>
+            </section>
+            <section class="contact-right">
+                <form>
+                    <input type="text" name="Name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                    <button type="submit" class="btn btn2">Submit</button>
+                </form>
+            </section>
+        </section>
+    </section>
+    <section class="copyright">
+        <p>Copyright Made with <i class="fa-solid fa-heart-circle-check"></i> by Easy Tutorials</p>
+    </section>
+</section>
+<!-- javascript to allow users to switch between different content sections.-->
+    <script>
+        var tablinks = document.getElementsByClassName("tab-links");
+        var tabcontents = document.getElementsByClassName("tab-contents");
+        function opentab(tabname){
+            for(tablink of tablinks){
+                tablink.classList.remove("active-link");
+            }
+            for(tabcontent of tabcontents){
+                tabcontent.classList.remove("active-tab");
+            }
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabname).classList.add("active-tab");
+        }
+    </script>
+</body>
+</html>
+
