@@ -14,7 +14,7 @@ public:
                 maxi = sum;
             }
             if(sum<0){
-                sum=0;
+                sum=0; // starting a new subarray
             }
         }
         return maxi;
