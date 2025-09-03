@@ -15,101 +15,89 @@ struct TreeNode {
 };
 
 
+// without overflow handling : generates overflow issues
+
+
 class Solution {
 public:
     int widthOfBinaryTree(TreeNode* root) {
-        
-        // level order traversal with null storage
-        // constraints : -100 <= Node.val <= 100 hence we use -101 for storing null
 
-        queue<TreeNode*> q;
-        // TreeNode* node = root;
-        q.push(root);
-        // int maxWidth = 1;
-        vector<int> level;
+        // using 0 based segment tree indexing
+
+        if(!root){return 0;}
+        long long ans = 0;
+
+        queue< pair<TreeNode* , long long> > q;
+
+        q.push({root,0});
+
         while(!q.empty()){
             int size = q.size();
-            level.clear();
+            // int mmin = q.front().second; // min level idx : to make idx starting from 0
+            long long first,last;
             for(int i=0 ; i<size ; i++){
-                TreeNode* node = q.front();
+                TreeNode* node = q.front().first;
+                long long curr_idx = q.front().second;
                 q.pop();
-                
-                if(node==NULL){
-                    q.push(NULL);
-                    q.push(NULL);
-                    level.push_back(-101);
-                    continue;
+
+                if(i==0){first = curr_idx;}
+                if(i==size-1){last = curr_idx;}
+
+                if(node->left){
+                    q.push({node->left , (1LL*2*curr_idx) + 1 });
                 }
-
-                if(node->left){q.push(node->left);}
-                else{q.push(NULL);}
-
-                if(node->right){q.push(node->right);}
-                else{q.push(NULL);}
-
-                level.push_back(node->val);
+                if(node->right){
+                    q.push({node->right , (1LL*2*curr_idx) + 2 });
+                }
             }
+            ans = max(ans , last - first+1);
         }
 
-        int i=level.size()-1;
-        for( ; i>=0 ; i--){
-            if(level[i]>(-101)) break;
-        }
-
-        return i+1;
+        return ans;
 
     }
 };
 
 
-// try 2
-
-
-// levelorder
-vector<vector<int>> lastLevel(TreeNode* root) {
-    vector<vector<int>> ans;
-    if(root==NULL){return ans;}
-    queue<TreeNode*> q;
-    q.push(root);
-    while(!q.empty()){
-        int size = q.size();
-        vector<int> level;
-        for(int i=0 ; i<size ; i++){
-            TreeNode* node = q.front();
-            q.pop();
-            if(node==NULL) {
-                level.push_back(-101);
-            }
-            else{
-                if(node->left!=NULL){q.push(node->left);}
-                else{q.push(NULL);}
-                if(node->right!=NULL){q.push(node->right);}
-                else{q.push(NULL);}
-                level.push_back(node->val);
-            }
-        }
-        ans.push_back(level);
-    }
-    return ans;
-}
+// optimal code - striver
+// overflow handling using mmin
 
 class Solution {
 public:
     int widthOfBinaryTree(TreeNode* root) {
-        
-        // level order traversal with null storage
-        // constraints : -100 <= Node.val <= 100 hence we use -101 for storing null
 
-        vector<vector<int>> vec = lastLevel(root);
-        int len = vec.size();
+        // using 0 based segment tree indexing
 
-        vector<int> level = vec[len-1];
+        if(!root){return 0;}
+        int ans = 0;
 
-        int i=level.size()-1;
-        for( ; i>=0 ; i--){
-            if(level[i]>(-101)) break;
+        queue< pair<TreeNode* , long long> > q;
+
+        q.push({root,0});
+
+        while(!q.empty()){
+            int size = q.size();
+            int mmin = q.front().second; // min level idx : to make idx starting from 0
+            int first,last;
+            for(int i=0 ; i<size ; i++){
+                TreeNode* node = q.front().first;
+                int curr_idx = q.front().second - mmin;
+                q.pop();
+
+                if(i==0){first = curr_idx;}
+                if(i==size-1){last = curr_idx;}
+
+                if(node->left){
+                    q.push({node->left , (1LL*2*curr_idx) + 1 });
+                }
+                if(node->right){
+                    q.push({node->right , (1LL*2*curr_idx) + 2 });
+                }
+            }
+            ans = max(ans , last - first+1);
         }
 
-        return i+1;
+        return ans;
+
     }
 };

@@ -1,8 +1,9 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-// gemini pro optimal solution : ways to place 2
+// https://leetcode.com/problems/find-the-number-of-ways-to-place-people-ii/description/
 
+// gemini pro optimal solution : ways to place 2
 
 class Solution {
 public:
