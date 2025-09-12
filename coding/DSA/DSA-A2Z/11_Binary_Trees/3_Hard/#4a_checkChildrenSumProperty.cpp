@@ -2,7 +2,7 @@
 using namespace std;
 
 // GFG
-// https://www.geeksforgeeks.org/problems/bottom-view-of-binary-tree/1
+// https://www.geeksforgeeks.org/problems/children-sum-parent/1
 
 // Tree Node
 class Node {
@@ -20,11 +20,11 @@ class Node {
 };
 
 
-// my try 1
+// my try 1 : accepted
 
 class Solution {
   public:
-    bool bfs(Node* root){
+    bool dfs(Node* root){
         if(root==NULL){return true;}
 
         if(!root->left && !root->right){return true;}
@@ -37,14 +37,14 @@ class Solution {
             return false;
         }
 
-        return bfs(root->left) && bfs(root->right);
+        return dfs(root->left) && dfs(root->right);
 
     }
     int isSumProperty(Node *root) {
         
         if(!root->left && !root->right){return 1;}
         
-        return bfs(root) ? 1 : 0;
+        return dfs(root) ? 1 : 0;
 
     }
 };
