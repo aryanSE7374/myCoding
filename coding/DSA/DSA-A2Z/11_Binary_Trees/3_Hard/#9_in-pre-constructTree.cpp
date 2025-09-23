@@ -13,7 +13,7 @@ struct TreeNode {
 };
 
 
-// my try1
+// my try1 : passed
 
 class Solution {
 public:
