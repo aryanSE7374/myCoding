@@ -12,6 +12,7 @@ struct TreeNode {
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
+// brute O(n^2)
 
 // my try1 : passed
 
