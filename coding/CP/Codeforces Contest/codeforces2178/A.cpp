@@ -18,18 +18,9 @@ using namespace std;
 
 void SOLVE(){
 
-    string s;
-    cin >> s;
-
-    int count=0;
-    int n = s.size();
-    f(i,0,n){
-        if(s[i] == 'Y') count++;
-    }
-
-    if(count < 2) cout << "YES";
-    else cout << "NO";
-
+    int k,x;
+    cin >> k >> x;
+    cout << (k*x) + 1 ;
 
     co_endl;
 }

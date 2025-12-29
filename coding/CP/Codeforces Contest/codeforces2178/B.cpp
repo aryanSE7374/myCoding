@@ -18,18 +18,28 @@ using namespace std;
 
 void SOLVE(){
 
-    string s;
-    cin >> s;
+    int n;
+    cin >> n;
+    vi a(n);
 
-    int count=0;
-    int n = s.size();
+
     f(i,0,n){
-        if(s[i] == 'Y') count++;
+        cin >> a[i];
     }
 
-    if(count < 2) cout << "YES";
-    else cout << "NO";
+    int del = 0;
+    ll sum = 0;
 
+    f(i,0,n-2){
+        del = max( del , ( abs(a[i]-a[i+1]) + abs( a[i+1]-a[i+2] ) - abs( a[i]-a[i+2] ) )  ) ;
+        sum += 1LL*abs(a[i]-a[i+1]);
+    }
+    sum += 1LL*abs(a[n-2]-a[n-1]);
+
+    del = max( del, abs(a[0] - a[1]) ) ;
+    del = max( del, abs(a[n-2] - a[n-1] ) );
+
+    cout << sum - del;
 
     co_endl;
 }

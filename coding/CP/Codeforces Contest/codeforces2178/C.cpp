@@ -18,18 +18,32 @@ using namespace std;
 
 void SOLVE(){
 
-    string s;
-    cin >> s;
+    int n;
+    cin >> n;
+    vll a(n);
 
-    int count=0;
-    int n = s.size();
+    ll mini = INT_MAX;
     f(i,0,n){
-        if(s[i] == 'Y') count++;
+        cin >> a[i];
+        mini = min ( mini , a[i]); 
     }
 
-    if(count < 2) cout << "YES";
-    else cout << "NO";
+    // ll ans1 = mini;
 
+    ll ans = INT_MAX;
+
+    f(i,0,n){
+        if ( a[i] - mini > 0 ){
+            ans = min ( ans , a[i]-mini );
+        }
+    }
+
+    if (ans != INT_MAX ) {
+        cout << max( ans , mini);
+    }
+    else{
+        cout << mini;
+    }
 
     co_endl;
 }

@@ -18,28 +18,41 @@ using namespace std;
 
 void SOLVE(){
 
-    int n;
-    cin >> n;
-    vi a(n);
+    // greedy
 
+    string s;
+    cin >> s;
 
-    f(i,0,n){
-        cin >> a[i];
+    int n = s.size();
+
+    int count = 0;
+
+    if(s[0] == 'u'){
+        s[0] = 's';
+        count++;
     }
 
-    int del = 0;
-    ll sum = 0;
-
-    f(i,0,n-2){
-        del = max( del , ( abs(a[i]-a[i+1]) + abs( a[i+1]-a[i+2] ) - abs( a[i]-a[i+2] ) )  ) ;
-        sum += 1LL*abs(a[i]-a[i+1]);
+    if(s[n-1] == 'u'){
+        s[0] = 's';
+        count++;
     }
-    sum += 1LL*abs(a[n-2]-a[n-1]);
 
-    del = max( del, abs(a[0] - a[1]) ) ;
-    del = max( del, abs(a[n-2] - a[n-1] ) );
+    bool flag = false;
+    for(int i=1 ; i<n-1 ; i++){
 
-    cout << sum - del;
+        if(s[i]=='u' && flag){
+            s[i] = 's';
+            count++;
+            flag = false;
+        }
+
+        else if(s[i] == 's'){flag = false;}
+
+        else flag = true;
+
+    }
+
+    cout << count ;
 
     co_endl;
 }
