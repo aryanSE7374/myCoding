@@ -3,6 +3,7 @@
 Thumbs.db          # Windows image preview cache
 ehthumbs.db        # Windows thumbnail cache
 Icon?              # macOS custom folder icon
+.DS_Store
 
 # === Node.js ===
 node_modules/
