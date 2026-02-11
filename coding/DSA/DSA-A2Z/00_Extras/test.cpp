@@ -78,6 +78,117 @@ public:
     }
 };
 
+
+
+// ----- //
+
+
+/*
+
+approach : 
+
+let s be divided into two categories : s[0] = a and s[0] = b
+
+a1 = frst occ of 'a' in s
+am = last occ of 'a' in s
+
+b1 = frst occ of 'b' in s
+bk = last occ of 'b' in s
+
+s-case-1 : [ a1 ...... am ] 
+                  [ b1 ....... bk]
+
+
+s-case-2 : [ b1 ....... bk]
+                  [ a1 ...... am ] 
+
+
+c1 = total a's , c2 = total b's
+
+if ( s[0] = a ) : 
+    case1-1 : 
+        remove all bad b's : cnt of b's before last a (am) = c3
+
+    case1-2 : 
+        remove all bad a's : cnt of a's after first b (b1) = c4
+
+if ( s[0] = b ) :
+    case2-1 : 
+        remove all bad a's : c1 = cnt of total a's (case when all b's is balanced)
+
+    case2-2 : 
+        remove all bad b's : cnt of b's before last a (am) = c5
+
+
+*/
+
+class Solution {
+public:
+    int minimumDeletions(string s) {
+
+        int n = s.size();
+
+        int a1 = -1 , am = -1;
+        int b1 = -1 , bk = -1;
+
+        int c1 = 0 , c2 = 0; // total a , b
+
+        for ( int i = 0 ; i < n ; i++ ) {
+
+            if ( s[i] == 'a' ) {
+                c1++;
+                if ( a1 == -1 ) a1 = i;
+                am = i;
+            }
+            else {
+                c2++;
+                if ( b1 == -1 ) b1 = i;
+                bk = i;
+            }
+        }
+
+        // Edge case: already balanced
+        if ( c1 == 0 || c2 == 0 ) return 0;
+
+        int ans = INT_MAX;
+
+        if ( s[0] == 'a' ) {
+
+            // case1-1: remove all bad b's before last a
+            int c3 = 0;
+            for ( int i = 0 ; i < am ; i++ ) {
+                if ( s[i] == 'b' ) c3++;
+            }
+
+            // case1-2: remove all bad a's after first b
+            int c4 = 0;
+            for ( int i = b1 + 1 ; i < n ; i++ ) {
+                if ( s[i] == 'a' ) c4++;
+            }
+
+            ans = min(c3, c4);
+        }
+        else { // s[0] == 'b'
+
+            // case2-1: remove all a
+            int case1 = c1;
+
+            // case2-2: remove b before last a
+            int c5 = 0;
+            for ( int i = 0 ; i < am ; i++ ) {
+                if ( s[i] == 'b' ) c5++;
+            }
+
+            ans = min(case1, c5);
+        }
+
+        return ans;
+        
+    }
+};
+
+// ---- //
+
 int main(){
     
     return 0;

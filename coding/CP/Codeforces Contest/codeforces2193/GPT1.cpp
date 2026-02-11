@@ -1,0 +1,491 @@
+/*
+====================================================
+   Competitive Programming Template (C++17)
+   Author : Aryan Shrivastav
+====================================================
+*/
+
+#include <bits/stdc++.h>
+using namespace std;
+
+/* ================= BASIC MACROS ================= */
+
+#define ll long long
+#define ull unsigned long long
+#define vi vector<int>
+#define vll vector<ll>
+#define pii pair<int,int>
+#define pll pair<ll,ll>
+
+#define all(x) (x).begin(), (x).end()
+#define sz(x) (int)(x).size()
+#define endl '\n'
+
+const ll INF = 1e18;
+const int MOD = 1e9 + 7;
+
+/* ================= FAST IO ================= */
+
+#define fastio() ios::sync_with_stdio(false); cin.tie(nullptr)
+
+/* ================= INTERACTIVE UTILITIES ================= */
+
+void ask(ll x){
+    cout << x << endl;
+    cout.flush();
+}
+
+void answer(ll x){
+    cout << "! " << x << endl;
+    cout.flush();
+    exit(0);
+}
+
+string get_response(){
+    string s;
+    cin >> s;
+    return s;
+}
+
+/* ================= MATH / NUMBER THEORY ================= */
+
+// GCD / LCM
+ll gcd(ll a, ll b){ return b ? gcd(b, a % b) : a; }
+ll lcm(ll a, ll b){ return a / gcd(a,b) * b; }
+
+// Binary Exponentiation
+ll binpow(ll a, ll b, ll mod = MOD){
+    ll res = 1;
+    while(b){
+        if(b & 1) res = res * a % mod;
+        a = a * a % mod;
+        b >>= 1;
+    }
+    return res;
+}
+
+// Modular Inverse (mod must be prime)
+ll modinv(ll a, ll mod = MOD){
+    return binpow(a, mod - 2, mod);
+}
+
+/* ================= SIEVE ================= */
+
+const int MAXN = 1e6;
+vector<bool> isprime(MAXN + 1, true);
+
+void sieve(){
+    isprime[0] = isprime[1] = false;
+    for(int i = 2; i * i <= MAXN; i++)
+        if(isprime[i])
+            for(int j = i * i; j <= MAXN; j += i)
+                isprime[j] = false;
+}
+
+/* ================= PRIME FACTORIZATION ================= */
+
+vector<pair<ll,int>> prime_factorize(ll n){ 
+    vector<pair<ll,int>> f; // stores { prime_no , exp }
+    for(ll i = 2; i * i <= n; i++){
+        if(n % i == 0){
+            int cnt = 0;
+            while(n % i == 0){
+                n /= i;
+                cnt++;
+            }
+            f.push_back({i, cnt});
+        }
+    }
+    if(n > 1) f.push_back({n, 1});
+    return f;
+}
+
+/* ================= PREFIX SUM ================= */
+
+// pref[i] = sum of a[0..i]
+// range sum [l,r] = pref[r] - ( (l>0) ? pref[l-1] : 0 )
+
+/* ================= DIFFERENCE ARRAY ================= */
+
+// diff[l] += x;
+// diff[r+1] -= x;
+
+/* ================= KADANE ================= */
+// 1
+int maxSubArraySum(vector<int>& nums) {
+    int maxi=INT_MIN , sum=0;
+    for (int i = 0; i < nums.size(); i++)
+    {
+        sum+=nums[i];
+        if(sum>maxi){
+            maxi = sum;
+        }
+        if(sum<0){
+            sum=0; // starting a new subarray
+        }
+    }
+    return maxi;
+}
+// 2
+ll kadane(const vector<ll>& a){
+    ll cur = 0, mx = -INF;
+    for(ll x : a){
+        cur = max(x, cur + x);
+        mx = max(mx, cur);
+    }
+    return mx;
+}
+
+/* ================= TWO POINTER / SLIDING WINDOW ================= */
+
+// Fixed window
+// sum += a[i] - a[i-k];
+
+// Variable window
+// while(bad()) l++;
+
+// example
+
+int atMostK(vector<int>& nums, int k){
+    if(k==0){return 0;}
+    unordered_map<int , int> freq;
+    int n = nums.size();
+    int l=0 , r=0 ,count = 0;
+
+    while(r<n){
+        freq[nums[r]]++;
+        while (freq.size()>k)
+        {
+            freq[nums[l]]--;
+            if(freq[nums[l]]==0){freq.erase(nums[l]);}
+            l++;
+        }
+        count += (r-l+1);
+        r++;
+    }
+    return count;
+}
+int subarraysWithKDistinct(vector<int>& nums, int k) {
+    return atMostK(nums , k) - atMostK(nums , k-1);
+}
+
+/* ================= BINARY SEARCH ================= */
+
+// First true
+ll first_true(ll l, ll r, function<bool(ll)> check){
+    while(l < r){
+        ll mid = l + (r - l) / 2;
+        if(check(mid)) r = mid;
+        else l = mid + 1;
+    }
+    return l;
+}
+
+// lower_bound : LB = ≥ x ( “lower limit” - stops at the first value that is NOT smaller than x )
+// auto it = lower_bound(v.begin(), v.end(), x);
+// Returns an iterator to the first element ≥ x
+// int idx = it - v.begin(); // for index
+
+// upper_bound : UB = > x ( “strictly above” skips all values equal to x )
+// auto it = upper_bound(v.begin(), v.end(), x);
+// Returns an iterator to the first element > x
+// int idx = it - v.begin(); // for index
+
+// count occurrances of x : 
+// int count = upper_bound(v.begin(), v.end(), x) - lower_bound(v.begin(), v.end(), x);
+
+
+/* ================= GRAPHS ================= */
+
+const int N = 2e5 + 5;
+vector<int> adj[N];
+bool vis[N];
+
+// BFS
+void bfs(int src){
+    queue<int> q;
+    q.push(src);
+    vis[src] = true;
+    while(!q.empty()){
+        int u = q.front(); q.pop();
+        for(int v : adj[u]){
+            if(!vis[v]){
+                vis[v] = true;
+                q.push(v);
+            }
+        }
+    }
+}
+
+// DFS
+void dfs(int u){
+    vis[u] = true;
+    for(int v : adj[u])
+        if(!vis[v])
+            dfs(v);
+}
+
+// matrix to list
+// int n = matrix.size();
+// vector<vector<int>> adj(n);
+// for ( int i=0 ; i<n ; i++ ) {
+//     for ( int j=i+1 ; j<n ; j++ ) {
+//         if ( matrix[i][j] ) { // avoids self loops naturally
+//             adj[i].push_back(j);
+//             adj[j].push_back(i);
+//         }
+//     }
+// }
+
+/* ================= TOPOLOGICAL SORT ================= */
+
+vector<int> topo_sort(int n){
+    vector<int> indeg(n,0), topo;
+    for(int u = 0; u < n; u++)
+        for(int v : adj[u])
+            indeg[v]++;
+
+    queue<int> q;
+    for(int i = 0; i < n; i++)
+        if(indeg[i] == 0) q.push(i);
+
+    while(!q.empty()){
+        int u = q.front(); q.pop();
+        topo.push_back(u);
+        for(int v : adj[u])
+            if(--indeg[v] == 0)
+                q.push(v);
+    }
+    return topo;
+}
+
+/* ================= DIJKSTRA ================= */
+
+vector<pll> wadj[N];
+ll dist[N];
+
+void dijkstra(int src){
+    priority_queue<pll, vector<pll>, greater<pll>> pq;
+    fill(dist, dist + N, INF);
+    dist[src] = 0;
+    pq.push({0, src});
+
+    while(!pq.empty()){
+        auto [d, u] = pq.top(); pq.pop();
+        if(d > dist[u]) continue;
+        for(auto [v, w] : wadj[u]){
+            if(dist[v] > d + w){
+                dist[v] = d + w;
+                pq.push({dist[v], v});
+            }
+        }
+    }
+}
+
+/* ================= DSU (UNION FIND) ================= */
+
+int parent[N], sz_dsu[N];
+
+void make_set(int n){
+    for(int i = 0; i < n; i++){
+        parent[i] = i;
+        sz_dsu[i] = 1;
+    }
+}
+
+int find_set(int v){
+    if(v == parent[v]) return v;
+    return parent[v] = find_set(parent[v]);
+}
+
+void union_sets(int a, int b){
+    a = find_set(a);
+    b = find_set(b);
+    if(a != b){
+        if(sz_dsu[a] < sz_dsu[b]) swap(a, b);
+        parent[b] = a;
+        sz_dsu[a] += sz_dsu[b];
+    }
+}
+
+/* ================= BIT MANIPULATION ================= */
+
+// ===== Built-in functions (GCC / Clang) =====
+
+// __builtin_popcount(x)        -> count set bits (int)
+// __builtin_popcountll(x)      -> count set bits (long long)
+
+// __builtin_clz(x)             -> count leading zeros (32-bit) " zeros appearing before 1st nz"
+// __builtin_clzll(x)           -> count leading zeros (64-bit)
+
+// __builtin_ctz(x)             -> count trailing zeros
+// __builtin_ctzll(x)
+
+// __builtin_parity(x)          -> 1 if odd number of set bits
+
+// ===== Single-bit tricks =====
+
+// x & (-x)                     -> lowest set bit (LSB)
+// x & (x - 1)                  -> remove lowest set bit
+
+// ===== Check / Set / Clear / Toggle =====
+
+// (x >> i) & 1                 -> check ith bit
+// x | (1 << i)                 -> set ith bit
+// x & ~(1 << i)                -> clear ith bit
+// x ^ (1 << i)                 -> toggle ith bit
+
+// ===== Power of Two =====
+
+// x & (x - 1) == 0             -> power of 2 (x > 0)
+
+// ===== MSB / LSB : 0-based (x>0 ; or x=0 : undefined ) =====
+
+// 31 - __builtin_clz(x)        -> index of highest set bit (MSB)
+// __builtin_ctz(x)             -> index of lowest set bit (LSB)
+
+// ===== Subset Enumeration =====
+
+// for(int sub = mask; sub > 0; sub = (sub - 1) & mask)
+
+// ===== Iterate over set bits =====
+
+// while(x){ int b = x & -x; x -= b; }
+// while(x){ int i = __builtin_ctz(x); x &= (x - 1); }
+
+// ===== Bitmask ranges =====
+
+// (1 << n)                     -> 2^n
+// (1 << n) - 1                 -> mask with n lower bits set
+
+// ===== XOR tricks =====
+
+// x ^ x = 0
+// x ^ 0 = x
+// x ^ y ^ x = y
+
+
+// ===== Swap without temp =====
+
+// a ^= b; b ^= a; a ^= b;
+
+
+// ===== Fast modulo (power of 2) =====
+
+// x % (1 << k) == x & ((1 << k) - 1)
+
+/* ================= STRINGS ================= */
+
+// Frequency
+// map<char,int> freq;
+
+// KMP Prefix Function
+vector<int> prefix_function(const string& s){
+    int n = sz(s);
+    vector<int> pi(n);
+    for(int i = 1; i < n; i++){
+        int j = pi[i-1];
+        while(j > 0 && s[i] != s[j])
+            j = pi[j-1];
+        if(s[i] == s[j]) j++;
+        pi[i] = j;
+    }
+    return pi;
+}
+
+/* ================= DP PATTERNS ================= */
+
+// 0/1 Knapsack (1D)
+// for(i)
+//  for(w=W; w>=wt[i]; w--)
+//    dp[w] = max(dp[w], val[i] + dp[w-wt[i]]);
+
+// Grid DP
+// dp[i][j] = grid[i][j] + min(dp[i-1][j], dp[i][j-1]);
+
+/* ================= MONOTONIC STACK ================= */
+
+// ===== Next Greater Element (NGE) =====
+vector<int> nge(n, -1);
+stack<int> st;
+for(int i = 0; i < n; i++){
+    while(!st.empty() && a[st.top()] < a[i]){
+        nge[st.top()] = a[i];
+        st.pop();
+    }
+    st.push(i);
+}
+
+// ===== Next Smaller Element (NSE) =====
+vector<int> nse(n, -1);
+while(!st.empty()) st.pop();
+for(int i = 0; i < n; i++){
+    while(!st.empty() && a[st.top()] > a[i]){
+        nse[st.top()] = a[i];
+        st.pop();
+    }
+    st.push(i);
+}
+
+// ===== Previous Greater Element (PGE) =====
+vector<int> pge(n, -1);
+while(!st.empty()) st.pop();
+for(int i = 0; i < n; i++){
+    while(!st.empty() && a[st.top()] <= a[i]) st.pop();
+    if(!st.empty()) pge[i] = a[st.top()];
+    st.push(i);
+}
+
+// ===== Previous Smaller Element (PSE) =====
+vector<int> pse(n, -1);
+while(!st.empty()) st.pop();
+for(int i = 0; i < n; i++){
+    while(!st.empty() && a[st.top()] >= a[i]) st.pop();
+    if(!st.empty()) pse[i] = a[st.top()];
+    st.push(i);
+}
+
+/* ================= TREE TRAVERSALS ================= */
+
+// ===== Depth First Search (DFS) =====
+
+// Preorder   (Root → Left → Right)
+void preorder(TreeNode* root){
+    if(!root) return;
+    // visit(root)
+    preorder(root->left); // in
+    preorder(root->right); // post
+}
+
+// ===== Breadth First Search (BFS) =====
+// Level Order Traversal
+void levelOrder(TreeNode* root){
+    if(!root) return;
+    queue<TreeNode*> q;
+    q.push(root);
+    while(!q.empty()){
+        TreeNode* cur = q.front(); q.pop();
+        // visit(cur)
+        if(cur->left) q.push(cur->left);
+        if(cur->right) q.push(cur->right);
+    }
+}
+
+/* ================= SOLVE ================= */
+
+void SOLVE(){
+    // Write problem-specific code here
+}
+
+/* ================= MAIN ================= */
+
+int main(){
+    fastio();
+
+    // NOTE:
+    // Usually SINGLE test case in offline contests
+    // Add testcases ONLY if explicitly mentioned
+
+    SOLVE();
+    return 0;
+}
