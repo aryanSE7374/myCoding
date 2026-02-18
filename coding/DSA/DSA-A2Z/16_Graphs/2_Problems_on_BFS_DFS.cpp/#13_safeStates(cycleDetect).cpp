@@ -65,7 +65,7 @@ class Solution {
 
 // ------------------------------------------------------------------------------------------------------------------------------------ //
 
-// solution
+// solution : dfs based
 
 class Solution {
   public:
@@ -99,15 +99,14 @@ class Solution {
     vector<int> safeNodes(int V, vector<vector<int>>& edges) {
 
         vector<vector<int>> adj(V);
-        vector<int> check(V);
-        vector<int> ans;
-
+        
         for (auto e : edges) {
             adj[e[0]].push_back(e[1]);
         }
         
         vector<int> vis(V,0);
         vector<int> pathVis(V,0);   // create once (small optimization)
+        vector<int> check(V);
         
         for (int i=0; i<V; i++) {
             if (!vis[i]) {
@@ -115,6 +114,7 @@ class Solution {
             }
         }
         
+        vector<int> ans;
         for ( int i=0 ; i<V ; i++ ) {
             if ( check[i] ) ans.push_back(i);
         }
@@ -122,3 +122,9 @@ class Solution {
         
     }
 };
+
+
+
+// ------------------------------------------------------------------------------------------------------------------------------------ //
+
+// solution - using bfs
