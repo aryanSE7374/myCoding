@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-// try 1 : ovecomplicated the problem
+// try 1 : ovecomplicated the problem (WRONG APPROACH)
 
 class Solution {
   public:
