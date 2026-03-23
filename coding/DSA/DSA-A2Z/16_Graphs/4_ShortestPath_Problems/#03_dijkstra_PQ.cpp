@@ -1,6 +1,38 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+// ------------------------------------------------------------------------------------------ //
+
+/*
+
+Assumes:
+    Once node is finalized, its distance is optimal
+
+This fails even with one negative edge
+
+
+// NOTE : 
+
+With Negative Edge Only : 
+    You still get a valid shortest path tree.
+
+With Negative Cycle : 
+    There is no answer.
+
+    
+|------------------------------|---------------|----------------|
+| Feature                      | Negative Edge | Negative Cycle |
+|------------------------------|---------------|----------------|
+| Is shortest path defined?    | Yes           | No             |
+| Dijkstra works?              | No            | No             |
+| Bellman-Ford works?          | Yes           | Detects cycle  |
+| Floyd-Warshall works?        | Yes           | Detects cycle  |
+|------------------------------|---------------|----------------|
+
+*/
+
+// ------------------------------------------------------------------------------------------ //
+
 // my try : failed
 // TC : ElogE
 
