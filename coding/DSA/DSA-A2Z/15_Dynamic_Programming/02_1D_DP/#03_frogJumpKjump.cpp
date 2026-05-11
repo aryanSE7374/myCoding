@@ -82,3 +82,44 @@ int frogJump(int n, vector<int> &heights , int k)
     return dp[n-1];
 
 }
+
+
+// ----- //
+// my rec try 2
+class Solution {
+  public:
+    int f ( int n, int k, vector<int>& ht ) {
+        if ( n==0 ) return 0;
+        if ( n==1 ) return abs (ht[1] - ht[0]);
+        int mini = 1e9; // maximum val
+        for ( int i=1; (i<=k) && ( n-i >= 0 ); i++ ) {
+            mini = min ( mini, f(n-i, k, ht) + abs ( ht[n] - ht[n-i] ) );
+        }
+        return mini;
+    }
+    int minimizeCost(int k, vector<int>& ht) {
+        int n = ht.size();
+        return f(n-1, k, ht);
+    }
+};
+
+// memo 
+class Solution {
+  public:
+    vector<int> dp;
+    int f ( int n, int k, vector<int>& ht ) {
+        if ( n==0 ) return 0;
+        if ( n==1 ) return abs (ht[1] - ht[0]);
+        if ( dp[n] != -1 ) return dp[n];
+        int mini = 1e9; // maximum val
+        for ( int i=1; (i<=k) && ( n-i >= 0 ); i++ ) {
+            mini = min ( mini, f(n-i, k, ht) + abs ( ht[n] - ht[n-i] ) );
+        }
+        return dp[n] = mini;
+    }
+    int minimizeCost(int k, vector<int>& ht) {
+        int n = ht.size();
+        dp.assign(n+1, -1);
+        return f(n-1, k, ht);
+    }
+};

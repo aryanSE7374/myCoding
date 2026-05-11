@@ -23,3 +23,11 @@ int upperBound(vector<int> &arr, int x, int n) {
     }
     return ans;
 }
+
+
+/*
+NOTE : 
+
+Count of target = upper_bound - lower_bound
+
+*/

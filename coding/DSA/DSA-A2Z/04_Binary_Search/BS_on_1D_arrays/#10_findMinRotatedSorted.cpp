@@ -8,6 +8,7 @@ class Solution {
             int mini = INT_MAX;
             while(low<=high){
                 mid = (low+high)/2;
+                // this line is for optimization, this linehas no impact on correctness of solution
                 if(nums[low]<=nums[high]){//if sorted part from low to high i.e. both left and right part sorted
                     return min(mini,nums[low]); // min should be called here as well to handle edge case
                 }

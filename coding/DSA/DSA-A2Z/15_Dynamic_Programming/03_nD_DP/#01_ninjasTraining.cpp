@@ -171,6 +171,18 @@ int ninjaTraining(int n, vector<vector<int>> &points) {
 
 // tabulate - by striver
 
+/*
+generalized base case
+
+for ( int prev=0; prev<4; prev++ ) {
+    int maxi = 0;
+    for ( int j=0; j<3; j++ ) {
+        if ( j!=prev ) maxi = max(maxi, mat[0][j]);
+    }
+    dp[0][prev] = maxi;
+}
+*/
+
 int ninjaTraining(int n, vector<vector<int>> &points) {
 
     vector<vector<int>> dp( n , vector<int>(4,-1) );

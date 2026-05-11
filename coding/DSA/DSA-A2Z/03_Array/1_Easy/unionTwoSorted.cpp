@@ -47,3 +47,53 @@ class Solution {
         // return vector with correct order of elements
     }
 };
+
+
+// my solution
+
+class Solution {
+  public:
+    vector<int> findUnion(vector<int> &a, vector<int> &b) {
+        
+        int n1 = a.size(), n2 = b.size();
+        
+        vector<int> ans;
+        int last = INT_MIN;
+        
+        int i=0, j=0;
+        while ( i<n1 && j<n2 ) {
+            if ( a[i] <= b[j] ) {
+                if ( a[i] != last ) {
+                    ans.push_back(a[i]);
+                    last = a[i];
+                }
+                i++;
+            }
+            else {
+                if ( b[j] != last ) {
+                    ans.push_back(b[j]);
+                    last = b[j];
+                }
+                j++;
+            }
+        }
+        
+        while ( i<n1 ) {
+            if (a[i] != last) {
+                ans.push_back(a[i]);
+                last = a[i];
+            }
+            i++;
+        }
+        while ( j<n2 ) {
+            if ( b[j] != last ) {
+                ans.push_back(b[j]);
+                last = b[j];
+            }
+            j++;
+        }
+        
+        return ans;
+        
+    }
+};

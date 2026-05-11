@@ -73,7 +73,7 @@ public:
             }
             else{ //==2
                 swap(nums[mid] , nums[high]);
-                high--;
+                high--; // no i++ because later num could be a zero
             }
         }   
     }
