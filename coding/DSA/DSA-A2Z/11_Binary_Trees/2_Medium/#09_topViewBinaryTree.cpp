@@ -75,7 +75,7 @@ class Solution {
     // from left to right in Binary Tree.
     vector<int> topView(Node *root) {
         // code here
-        map<int , int> nodes; // map to store tracersal : [vertical -> node]
+        map<int , int> nodes; // map to store traversal : [vertical -> node]
         queue<pair<Node* , int>> todo; // { node , vertical }
         todo.push({root , 0}); // { root , 0th vertical }
 

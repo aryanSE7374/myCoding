@@ -45,7 +45,7 @@ public:
                 st.push('(');
                 continue;
             }
-            // if '(' the push else if ')' then pop
+            // if '(' then push else if ')' then pop
             if (s[i]=='(')
             {
                 st.push('(');

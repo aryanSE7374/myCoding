@@ -48,6 +48,40 @@ public:
     }
 };
 
+// ------------------------------------------------------------------------------------------------------------------------------------ // 
+
+// my brute force 2
+// TC : O(N^2)
+// SC : O(N)
+
+class Solution {
+public:
+
+    int height (TreeNode* node) {
+        if (!node) return 0;
+        int lh = height(node->left);
+        int rh = height(node->right);
+        return 1 + max (lh, rh);
+    }
+
+    void updateMaxi(TreeNode* root, int& maxi) {
+        if ( !root ) return;
+        int lh = height(root->left);
+        int rh = height(root->right);
+        maxi = max (maxi, lh + rh);
+        updateMaxi(root->left, maxi);
+        updateMaxi(root->right, maxi);
+    }
+
+    int diameterOfBinaryTree(TreeNode* root) {
+        int maxi = 0;
+        updateMaxi(root, maxi);
+        return maxi;
+    }
+};
+
+// ------------------------------------------------------------------------------------------------------------------------------------ // 
+
 // striver's brute solution
 // TC : O(N^2)
 // SC : O(N)
@@ -72,6 +106,8 @@ public:
     }
 };
 
+// ------------------------------------------------------------------------------------------------------------------------------------ // 
+
 
 // striver's optimal solution
 // TC : O(N)
@@ -93,3 +129,4 @@ public:
     }
 };
 
+// ------------------------------------------------------------------------------------------------------------------------------------ // 
