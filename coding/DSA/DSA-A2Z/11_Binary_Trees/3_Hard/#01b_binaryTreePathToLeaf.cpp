@@ -73,9 +73,36 @@ class Solution {
         }
         path.push_back(node->data);
         dfs(node->left , path , vec);
-        path.pop_back();
-        path.push_back(node->data);
+        path.pop_back(); // line1
+        path.push_back(node->data); // line 2
         dfs(node->right , path, vec);
+        path.pop_back();
+    }
+    vector<vector<int>> Paths(Node* root) {
+        vector<vector<int>> vec;
+        vector<int> path = {};
+        dfs(root , path , vec );
+        return vec;
+    }
+};
+
+
+// ------------------------------------------------------ //
+
+// more cleaner code by GPT
+
+class Solution {
+  public:
+    void dfs(Node* node , vector<int>& path , vector<vector<int>>& vec){
+        if(node==NULL){return;}
+        path.push_back(node->data);
+        if(node->left==NULL && node->right==NULL){
+            vec.push_back(path);
+        }
+        else {
+            dfs(node->left , path , vec);
+            dfs(node->right , path, vec);
+        }
         path.pop_back();
     }
     vector<vector<int>> Paths(Node* root) {

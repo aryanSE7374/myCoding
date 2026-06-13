@@ -1,0 +1,1 @@
+{"name":"Local: D","url":"/Users/aryan/Desktop/CF 2236/D.cpp","tests":[{"id":1781283037731,"input":"7\n5 1\n3 3 3 3 3\n3 1\n1 1 2\n2 2\n2 1\n4 1\n3 3 3 3\n4 3\n2 2 2 1\n4 1\n1 3 1 1\n5 1\n5 1 5 1 5\n","output":"NO\nYES\nYES\nYES\nYES\nNO\nYES\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/Users/aryan/Desktop/CF 2236/D.cpp","group":"local","local":true}
