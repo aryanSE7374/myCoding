@@ -82,7 +82,8 @@ void reorder(BinaryTreeNode<int>* root) {
         root->data = child;
     } else {
         if (root->left) root->left->data = root->data;
-        else if (root->right) root->right->data = root->data;
+        else if (root->right) root->right->data = root->data; // NOTE : tutorial solution uses if (updating both the children)
+        // updaating only one would also give enough sum to propogate down the recursion, backtracking will fix the parent itself
     }
 
     // Step 2: Recurse
@@ -94,7 +95,7 @@ void reorder(BinaryTreeNode<int>* root) {
     if (root->left) total += root->left->data;
     if (root->right) total += root->right->data;
 
-    if (root->left || root->right) root->data = total;
+    if (root->left || root->right) root->data = total; // if it's not a leaf, otherwise it will become zero
 }
 
 // Main function

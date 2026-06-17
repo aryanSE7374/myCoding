@@ -26,7 +26,7 @@ public:
         ListNode *temp = after->next;
         head->next = NULL;
         while(after!=NULL){
-            temp = after->next;
+            ;temp = after->next
             after->next = before;
             before = after;
             after = temp;

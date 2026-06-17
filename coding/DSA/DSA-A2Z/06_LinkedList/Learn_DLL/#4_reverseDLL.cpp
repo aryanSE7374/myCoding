@@ -36,6 +36,8 @@ public:
     }
 };
 
+// ------------------------------------------------------------ //
+
 // Function to convert an array
 // to a doubly linked list
 Node* convertArr2DLL(vector<int> arr) {
@@ -76,6 +78,7 @@ void print(Node* head) {
     }
 }
 
+// ------------------------------------------------------------ //
  
 // Funcion to reverse a doubly linked list
 // Stack Brute Force Approach
@@ -134,6 +137,7 @@ int main() {
     print(head);
 }
 
+// ------------------------------------------------------------ //
 
 // optimal : TUF , O(N) , O(1)
 
@@ -180,6 +184,7 @@ Node* reverseDLL(Node* head) {
     return prev->back;
 }
 
+// ------------------------------------------------------------ //
 
 // GFG solution : O(N) , O(1)
 
@@ -214,3 +219,4 @@ class Solution {
     }
 };
 
+// ------------------------------------------------------------ //

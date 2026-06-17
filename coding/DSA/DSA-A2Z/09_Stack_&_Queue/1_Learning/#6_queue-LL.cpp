@@ -19,7 +19,7 @@ private:
     QueueNode* Rear;
 
 public:
-    int size;
+    int size; // NOTE : should be private
 
     Queue() {
         Front = nullptr;

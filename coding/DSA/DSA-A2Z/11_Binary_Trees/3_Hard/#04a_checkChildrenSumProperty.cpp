@@ -48,3 +48,28 @@ class Solution {
 
     }
 };
+
+// ------------------------------------------------------------------------------------------ //
+
+// try 2
+
+class Solution {
+  public:
+    bool isLeaf(Node* node) {
+        return (!node->left && !node->right);
+    }
+    bool isSumProperty(Node *root) {
+        if ( root == NULL || isLeaf(root) ) return true;
+        
+        int lVal = (root->left) ? root->left->data : 0;
+        int rVal = (root->right) ? root->right->data : 0;
+        
+        if ( lVal + rVal != root->data ) return false;
+        
+        return isSumProperty(root->left) && isSumProperty(root->right);
+        
+    }
+};
+
+
+// ------------------------------------------------------------------------------------------ //

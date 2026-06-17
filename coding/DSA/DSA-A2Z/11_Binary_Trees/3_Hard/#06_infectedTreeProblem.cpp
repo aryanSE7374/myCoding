@@ -127,7 +127,7 @@ private:
         int minutes = 0;
         while (!q.empty()) {
             int sz = q.size();
-            bool spread = false; // spread flag
+            bool spread = false; // spread flag. NOTE : this can be removed , but then have to return minutes - 1
             for (int i = 0; i < sz; i++) {
                 TreeNode* node = q.front();
                 q.pop();
